@@ -127,6 +127,9 @@ spec:
           requests:
             cpu: 200m
             memory: 1024Mi
+        env:
+          - name: API_ROOT
+            value: "http://pttg-ip-api.pt-i-dev.svc.cluster.local"
         ports:
           - name: http
             containerPort: 8000
