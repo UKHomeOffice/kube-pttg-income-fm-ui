@@ -112,7 +112,7 @@ spec:
             memory: 1024Mi
         env:
           - name: API_ROOT
-            value: "http://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+            value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
         ports:
           - name: http
             containerPort: 8000
