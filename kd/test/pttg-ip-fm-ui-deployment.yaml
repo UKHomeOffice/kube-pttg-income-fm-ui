@@ -103,6 +103,11 @@ spec:
             name: javapki
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
+        env:
+          - name: API_ROOT
+            value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+          - name: JAVA_OPTS
+            value: "-Xms512m -Xmx768m"
         resources:
           limits:
             cpu: 200m
@@ -110,9 +115,6 @@ spec:
           requests:
             cpu: 200m
             memory: 1024Mi
-        env:
-          - name: API_ROOT
-            value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
         ports:
           - name: http
             containerPort: 8000
