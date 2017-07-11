@@ -135,8 +135,10 @@ spec:
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         env:
+          - name: ENV
+            value: "{{.ENVIRONMENT}}" 
           - name: API_ROOT
-            value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+            value: "https://pttg-ip-api:8081"
           - name: JAVA_OPTS
             value: "-Xms512m -Xmx768m"
         resources:
