@@ -5,17 +5,18 @@ metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
     ingress.kubernetes.io/secure-backends: "true"
+#    ingress.kubernetes.io/whitelist-source-range: "86.188.197.170/24"
   name: pttg-ip-fm-ui
 spec:
   rules:
-  - host: pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
+  - host: fm.ip.{{.ENVIRONMENT}}.pttg.homeoffice.gov.uk
     http:
       paths:
       - backend:
           serviceName: pttg-ip-fm-ui
           servicePort: 443
         path: /
-  - host: www.pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
+  - host: pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
     http:
       paths:
       - backend:
@@ -24,6 +25,6 @@ spec:
         path: /
   tls:
   - hosts:
+    - fm.ip.{{.ENVIRONMENT}}.pttg.homeoffice.gov.uk
     - pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
-    - www.pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
     secretName: letsencrypt-tls

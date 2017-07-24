@@ -48,6 +48,13 @@ spec:
             name: secrets
       - name: proxy
         image: quay.io/ukhomeofficedigital/nginx-proxy:v1.1.5
+        resources:
+         limits:
+          memory: "100Mi"
+          cpu: 100m
+         requests:
+          memory: "50Mi"
+          cpu: 100m
         env:
           - name: PROXY_SERVICE_HOST
             value: '127.0.0.1'
@@ -74,16 +81,32 @@ spec:
             containerPort: 80
       - name: keycloak-proxy
         image: quay.io/ukhomeofficedigital/go-keycloak-proxy:v1.2.7
+        resources:
+         limits:
+          memory: "100Mi"
+          cpu: 100m
+         requests:
+          memory: "50Mi"
+          cpu: 100m
+        env:
+          - name: PROXY_DISCOVERY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: endpoint-config
+                key: PROXY_DISCOVERY_URL
+          - name: PROXY_REDIRECTION_URL
+            valueFrom:
+              configMapKeyRef:
+                name: endpoint-config
+                key: PROXY_REDIRECTION_URL
         args:
           - --config=/etc/secrets/keycloak-api-secret.yaml
-          - --discovery-url=https://sso.digital.homeoffice.gov.uk/auth/realms/pttg-dev
           - --client-id=pttg-fs-{{.ENVIRONMENT}}
           - --listen=127.0.0.1:9000
           - --log-requests=true
           - --json-logging=true
           - --upstream-url=http://127.0.0.1:8000
           - --no-redirects=false
-          - --redirection-url=https://pttg-ip-fm-ui-{{.ENVIRONMENT}}.notprod.homeoffice.gov.uk
           - --cors-origins='*'
           - --resource=uri=/healthz|white-listed=true
           - --resource=uri=/|methods=GET|roles=pttg-user
@@ -135,19 +158,15 @@ spec:
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         env:
-          - name: ENV
-            value: "{{.ENVIRONMENT}}" 
           - name: API_ROOT
             value: "http://pttg-ip-api:8080"
-          - name: JAVA_OPTS
-            value: "-Xms512m -Xmx768m"
         resources:
           limits:
-            cpu: 200m
-            memory: 1024Mi
+            cpu: 1000m
+            memory: 400Mi
           requests:
             cpu: 200m
-            memory: 1024Mi
+            memory: 100Mi
         ports:
           - name: http
             containerPort: 8000
