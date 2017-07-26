@@ -159,7 +159,7 @@ spec:
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         env:
           - name: API_ROOT
-            value: "http://pttg-ip-api:8080"
+            value: "http://pttg-ip-api"
         resources:
           limits:
             cpu: 1000m
