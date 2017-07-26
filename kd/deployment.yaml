@@ -177,7 +177,7 @@ spec:
             httpHeaders:
               - name: X-probe
                 value: kubelet
-          initialDelaySeconds: 180
+          initialDelaySeconds: 20
           periodSeconds: 20
           timeoutSeconds: 10
         readinessProbe:
@@ -187,7 +187,7 @@ spec:
               httpHeaders:
                 - name: X-probe
                   value: kubelet
-            initialDelaySeconds: 180
+            initialDelaySeconds: 20
             periodSeconds: 20
             timeoutSeconds: 10
         imagePullPolicy: Always
