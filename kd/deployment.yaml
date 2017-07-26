@@ -159,7 +159,9 @@ spec:
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         env:
           - name: API_ROOT
-            value: "https://pttg-ip-api"
+            value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+          - name: CA_CERTS_PATH
+            value: "/data/ca.pem"
         resources:
           limits:
             cpu: 1000m
