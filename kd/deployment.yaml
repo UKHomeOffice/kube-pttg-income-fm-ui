@@ -162,6 +162,8 @@ spec:
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
             value: "/data/ca.pem"
+          - name: NODE_TLS_REJECT_UNAUTHORIZED
+            value: "0"
         resources:
           limits:
             cpu: 1000m
