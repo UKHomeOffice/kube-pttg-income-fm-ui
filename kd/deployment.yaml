@@ -124,37 +124,6 @@ spec:
           limits:
             memory: 256Mi
             cpu: 100m
-      - name: vaultjks
-        image: quay.io/ukhomeofficedigital/vaultjks:v0.1.0
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 100m
-            memory: "100Mi"
-          requests:
-            cpu: 100m
-            memory: "50Mi"
-        env:
-          - name: VAULT_ADDR
-            value: "https://vault.vault.svc.cluster.local:8200"
-          - name: VAULT_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: store-token
-                key: token
-          - name: VAULT_PKI_PATH
-            value: services/pt-i-{{.ENVIRONMENT}}/pki
-          - name: VAULT_ROLE_NAME
-            value: default
-          - name: SLEEP_FOREVER
-            value: "true"
-          - name: IP_SAN
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
-        volumeMounts:
-          - mountPath: /data
-            name: javapki
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         env:
@@ -195,13 +164,10 @@ spec:
         imagePullPolicy: Always
         volumeMounts:
           - mountPath: /data
-            name: javapki
+            name: secrets
             readOnly: true
       volumes:
       - name: secrets
-        emptyDir:
-          medium: "Memory"
-      - name: javapki
         emptyDir:
           medium: "Memory"
       - name: keycloak-api-secret
