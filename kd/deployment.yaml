@@ -130,7 +130,7 @@ spec:
           - name: API_ROOT
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
-            value: "/data/ca.pem"
+            value: "/data/pttg-income-proving-fm-ui-ca.pem"
         resources:
           limits:
             cpu: 1000m
