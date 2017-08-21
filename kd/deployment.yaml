@@ -70,6 +70,10 @@ spec:
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-bundle.pem
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-key.pem
+          - name: HTTPS_LISTEN_PORT
+            value: 443
+          - name: HTTP_LISTEN_PORT
+            value: 80
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
