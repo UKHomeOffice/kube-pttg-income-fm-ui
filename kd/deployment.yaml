@@ -70,15 +70,13 @@ spec:
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-bundle.pem
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-key.pem
-          - name: HTTPS_LISTEN_PORT
-            value: '443'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
             readOnly: true
         ports:
           - name: https
-            containerPort: 443
+            containerPort: 10443
       - name: keycloak-proxy
         image: quay.io/ukhomeofficedigital/go-keycloak-proxy:v1.2.7
         resources:
