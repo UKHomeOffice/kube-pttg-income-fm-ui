@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-env
 export WHITELIST=${WHITELIST:-0.0.0.0/0}
-export KUBE_TOKEN=${PTTG_KUBE_TOKEN}
 
-env
 if [ $ENVIRONMENT == "prod" ]
 then
+    export KUBE_TOKEN=${PROD_KUBE_TOKEN}
     export DNS_PREFIX=
 else
     export DNS_PREFIX=${ENVIRONMENT}.
