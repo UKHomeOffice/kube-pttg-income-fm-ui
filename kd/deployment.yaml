@@ -109,6 +109,7 @@ spec:
           - --resource=uri=/healthz|white-listed=true
           - --resource=uri=/|methods=GET,POST|roles=pttg-ip-fm
           - --secure-cookie=true
+          - --http-only-cookie=true
           - --verbose
         imagePullPolicy: Always
         ports:
