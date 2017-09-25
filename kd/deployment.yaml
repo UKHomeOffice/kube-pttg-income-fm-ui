@@ -75,6 +75,8 @@ spec:
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-bundle.pem
           - name: SERVER_KEY
             value: /etc/nginx/secrets/pttg-income-proving-fm-ui-key.pem
+          - name: ADD_NGINX_SERVER_CFG
+            value: 'gzip off;'
         volumeMounts:
           - name: secrets
             mountPath: /etc/nginx/secrets
