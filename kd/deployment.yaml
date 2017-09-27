@@ -25,6 +25,11 @@ spec:
       - name: vault-sidekick
         image: quay.io/ukhomeofficedigital/vault-sidekick:v0.2.0
         imagePullPolicy: Always
+        securityContext:
+           capabilities:
+             drop:
+               - SETUID
+               - SETGID
         resources:
          limits:
           memory: "100Mi"
@@ -53,6 +58,11 @@ spec:
             name: secrets
       - name: proxy
         image: quay.io/ukhomeofficedigital/pttg-nginx-proxy:v3.1.3a
+        securityContext:
+           capabilities:
+             drop:
+               - SETUID
+               - SETGID
         resources:
          limits:
           memory: "100Mi"
@@ -86,6 +96,11 @@ spec:
             containerPort: 10443
       - name: keycloak-proxy
         image: quay.io/ukhomeofficedigital/go-keycloak-proxy:v1.2.7
+        securityContext:
+           capabilities:
+             drop:
+               - SETUID
+               - SETGID
         resources:
          limits:
           memory: "100Mi"
@@ -132,6 +147,11 @@ spec:
             cpu: 100m
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
+        securityContext:
+           capabilities:
+             drop:
+               - SETUID
+               - SETGID
         env:
           - name: API_ROOT
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
