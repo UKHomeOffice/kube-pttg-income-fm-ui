@@ -159,6 +159,8 @@ spec:
             value: "/data/pttg-income-proving-fm-ui-ca.pem"
           - name: CLIENT_CERTS_PATH
             value: "/data/pttg-income-proving-fm-ui.pem"
+          - name: CLIENT_KEY_PATH
+            value: "/data/pttg-income-proving-fm-ui-key.pem"
           - name: PROXY_DISCOVERY_URL
             valueFrom:
               configMapKeyRef:
