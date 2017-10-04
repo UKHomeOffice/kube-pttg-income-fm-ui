@@ -4,3 +4,4 @@ tmp/kubecfg
 *.iml
 kubectl
 kd_linux_amd64
+.DS_Store
