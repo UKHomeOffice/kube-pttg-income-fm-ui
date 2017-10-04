@@ -157,6 +157,8 @@ spec:
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
             value: "/data/pttg-income-proving-fm-ui-ca.pem"
+          - name: CLIENT_CERTS_PATH
+            value: "/data/pttg-income-proving-fm-ui.pem"
           - name: PROXY_DISCOVERY_URL
             valueFrom:
               configMapKeyRef:
