@@ -157,6 +157,11 @@ spec:
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
             value: "/data/pttg-income-proving-fm-ui-ca.pem"
+          - name: PROXY_DISCOVERY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: endpoint-config
+                key: PROXY_DISCOVERY_URL
         resources:
           limits:
             cpu: 1000m
