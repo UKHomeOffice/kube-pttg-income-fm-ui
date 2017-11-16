@@ -155,6 +155,8 @@ spec:
         env:
           - name: API_ROOT
             value: "https://pttg-ip-api.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+          - name: FEEDBACK_ROOT
+            value: "https://pttg-feedback.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
             value: "/data/pttg-income-proving-fm-ui-ca.pem"
           - name: IP_API_AUTH
