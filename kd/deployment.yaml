@@ -136,7 +136,7 @@ spec:
              - SETGID
         env:
           - name: API_ROOT
-            value: "https://pttg-ip-service.pttg-ip-{{.ENVIRONMENT}}.svc.cluster.local"
+            value: "https://pttg-ip-api.pttg-ip-{{.ENVIRONMENT}}.svc.cluster.local"
           - name: CA_CERTS_PATH
             value: "/certs/tls.pem"
           - name: PROXY_REDIRECTION_URL
