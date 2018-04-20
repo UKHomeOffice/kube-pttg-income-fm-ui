@@ -121,10 +121,6 @@ spec:
         - name: keycloak-api-secret
           mountPath: /etc/secrets
           readOnly: true
-        resources:
-          limits:
-            memory: 256Mi
-            cpu: 100m
       - name: pttg-ip-fm-ui
         image: quay.io/ukhomeofficedigital/pttg-ip-fm-ui:{{.VERSION}}
         imagePullPolicy: Always
@@ -141,6 +137,18 @@ spec:
             value: "/certs/tls.pem"
           - name: PROXY_REDIRECTION_URL
             value: https://{{.DOMAIN_NAME}}
+          - name: FEEDBACK_ROOT
+            value: "https://pttg-feedback.pt-i-{{.ENVIRONMENT}}.svc.cluster.local"
+          - name: PROXY_DISCOVERY_URL
+            valueFrom:
+              configMapKeyRef:
+                name: endpoint-config
+                key: PROXY_DISCOVERY_URL
+          - name: IP_API_AUTH
+            valueFrom:
+              secretKeyRef:
+                name: pttg-ip-api-service-secrets
+                key: pttg_ip_fm_ui
         resources:
           limits:
             cpu: 1000m
