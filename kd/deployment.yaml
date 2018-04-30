@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: certs
-        image: quay.io/ukhomeofficedigital/pttg-cfssl-sidekick:build-6
+        image: quay.io/ukhomeofficedigital/cfssl-sidekick:v0.0.6
         securityContext:
           runAsNonRoot: true
           capabilities:
