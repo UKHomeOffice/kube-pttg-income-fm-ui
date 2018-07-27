@@ -150,6 +150,11 @@ spec:
               secretKeyRef:
                 name: pttg-ip-api-service-secrets
                 key: pttg_ip_fm_ui
+          - name: FEEDBACK_AUTH
+            valueFrom:
+              secretKeyRef:
+                name: pttg-feedback-service-secrets
+                key: pttg_ip_fm_ui
         resources:
           limits:
             cpu: 1000m
