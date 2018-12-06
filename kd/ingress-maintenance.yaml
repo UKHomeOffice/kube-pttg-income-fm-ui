@@ -4,7 +4,8 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
-    ingress.kubernetes.io/secure-backends: "true"
+    ingress.kubernetes.io/secure-backends: "true"     # TODO Remove this once ACP have upgraded ingress controller 0.21.0
+    ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingress.kubernetes.io/whitelist-source-range: "62.25.109.196/24"
     ingress.kubernetes.io/rewrite-target: /htmlstatic
   name: pttg-ip-fm-ui
