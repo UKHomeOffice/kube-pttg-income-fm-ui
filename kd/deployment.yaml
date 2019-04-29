@@ -110,6 +110,7 @@ spec:
           - --upstream-url=http://127.0.0.1:8000
           - --upstream-response-header-timeout=101s
           - --upstream-timeout=101s
+          - --upstream-keepalive-timeout=101s
           - --no-redirects=false
           - --redirection-url=https://{{.DOMAIN_NAME}}
           - --cors-origins='*'
