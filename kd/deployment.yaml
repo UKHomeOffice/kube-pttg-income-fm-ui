@@ -89,7 +89,7 @@ spec:
           - name: https
             containerPort: 10443
       - name: keycloak-gatekeeper
-        image: quay.io/keycloak/keycloak-gatekeeper:7.0.
+        image: quay.io/keycloak/keycloak-gatekeeper:7.0.1
         imagePullPolicy: Always
         securityContext:
           runAsNonRoot: true
