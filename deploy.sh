@@ -27,6 +27,7 @@ echo "DOMAIN_NAME is $DOMAIN_NAME"
 cd kd || exit
 
 kd --insecure-skip-tls-verify \
+    -f ingress-certificate.yaml \
     -f networkPolicy.yaml \
     -f ingress.yaml \
     -f deployment.yaml \
