@@ -6,10 +6,10 @@ metadata:
   labels:
     cert-manager.io/solver: http01
 spec:
-  secretName: {{ .DEPLOYMENT_NAME }}-external-tls-cmio
+  secretName: letsencrypt-{{ .DEPLOYMENT_NAME }}-cmio
   issuerRef:
-    name: letsencrypt-staging
+    name: {{ .CERT_ISSUER | quote }}
     kind: ClusterIssuer
     group: cert-manager.io
   dnsNames:
-    - {{ .APP_HOST_EXTERNAL }}
+    - {{ .DOMAIN_NAME | quote }}
