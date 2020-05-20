@@ -3,7 +3,7 @@
 export KUBE_NAMESPACE=${KUBE_NAMESPACE}
 export KUBE_SERVER=${KUBE_SERVER}
 export WHITELIST=${WHITELIST:-0.0.0.0/0}
-export DEPLOYMENT_NAME=${DEPLOYMENT_NAME:pttg-ip-fm-ui}
+export DEPLOYMENT_NAME=${DEPLOYMENT_NAME:-pttg-ip-fm-ui}
 
 if [[ -z ${VERSION} ]] ; then
     export VERSION=${IMAGE_VERSION}
