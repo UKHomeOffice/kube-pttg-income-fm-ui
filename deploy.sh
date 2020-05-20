@@ -3,6 +3,7 @@
 export KUBE_NAMESPACE=${KUBE_NAMESPACE}
 export KUBE_SERVER=${KUBE_SERVER}
 export WHITELIST=${WHITELIST:-0.0.0.0/0}
+export DEPLOYMENT_NAME=${DEPLOYMENT_NAME:pttg-ip-fm-ui}
 
 if [[ -z ${VERSION} ]] ; then
     export VERSION=${IMAGE_VERSION}
@@ -26,6 +27,7 @@ echo "deploy ${VERSION} to ${ENVIRONMENT} namespace - using Kube token stored as
 echo "KC_REALM is $KC_REALM"
 echo "CERT_ISSUER is $CERT_ISSUER"
 echo "DOMAIN_NAME is $DOMAIN_NAME"
+echo "DEPLOYMENT_NAME is $DEPLOYMENT_NAME"
 
 cd kd || exit
 
