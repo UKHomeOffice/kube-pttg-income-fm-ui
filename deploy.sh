@@ -33,6 +33,7 @@ cd kd || exit
 
 kd --insecure-skip-tls-verify \
     -f ingress-certificate.yaml \
+    -f pod-to-pod-server-certificate.yaml \
     -f networkPolicy.yaml \
     -f ingress.yaml \
     -f deployment.yaml \
